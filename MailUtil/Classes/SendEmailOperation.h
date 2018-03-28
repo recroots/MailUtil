@@ -12,6 +12,8 @@
 
 @interface SendEmailOperation : ConcurrentOperation
 @property (nonatomic, copy) NSString *to;
+@property (nonatomic, copy) NSString *cc;
+@property (nonatomic, copy) NSString *bcc;
 @property (nonatomic, copy) NSString *subject;
 @property (nonatomic, copy) NSString *body;
 @property (nonatomic, copy) NSString *path;
@@ -41,5 +43,10 @@
                    subject:(NSString *)subject
                       body:(NSString *)body
                       path:(NSString *)path;
-
+- (instancetype)initWithTo:(NSString *)to
+                        cc:(NSString *)cc
+                       bcc:(NSString *)bcc
+                   subject:(NSString *)subject
+                      body:(NSString *)body
+                      path:(NSString *)path;
 @end

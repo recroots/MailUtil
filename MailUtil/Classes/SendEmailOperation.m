@@ -98,6 +98,26 @@ static NSString *globalPassword;
     return self;
 }
 
+-(instancetype)initWithTo:(NSString *)to cc:(NSString *)cc bcc:(NSString *)bcc subject:(NSString *)subject body:(NSString *)body path:(NSString *)path
+{
+    self = [super init];
+    if (self)
+    {
+        self.mailServer = globalMailServer;
+        self.fromEmail = globalFromEmail;
+        self.login = globalLogin;
+        self.password = globalPassword;
+        
+        self.to = to;
+        self.cc = cc;
+        self.bcc = bcc;
+        self.subject = subject;
+        self.body = body;
+        self.path = path;
+    }
+    return self;
+}
+
 - (void)main
 {
     SKPSMTPMessage *message = [self createMessage]; // configure your message like you are now
@@ -115,6 +135,8 @@ static NSString *globalPassword;
     SKPSMTPMessage *testMsg = [[SKPSMTPMessage alloc] init];
     testMsg.fromEmail = self.fromEmail;
     testMsg.toEmail = self.to;
+    testMsg.ccEmail = self.cc;
+    testMsg.bccEmail = self.bcc;
     testMsg.relayHost = self.mailServer;
     testMsg.requiresAuth = YES;
     testMsg.login = self.login;
