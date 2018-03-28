@@ -9,6 +9,15 @@
 #import <UIKit/UIKit.h>
 
 #import "ConcurrentOperation.h"
+#import "SKPSMTPMessage.h"
+
+@protocol SendEmailOperationDelegate
+@required
+
+-(void)messageSent:(SKPSMTPMessage *)message;
+-(void)messageFailed:(SKPSMTPMessage *)message error:(NSError *)error;
+
+@end
 
 @interface SendEmailOperation : ConcurrentOperation
 @property (nonatomic, copy) NSString *to;
@@ -17,6 +26,7 @@
 @property (nonatomic, copy) NSString *subject;
 @property (nonatomic, copy) NSString *body;
 @property (nonatomic, copy) NSString *path;
+@property(nonatomic, assign) id <SendEmailOperationDelegate> delegate;
 
 // 如果没有设置，则用全局的。
 @property (nonatomic, copy) NSString *mailServer;

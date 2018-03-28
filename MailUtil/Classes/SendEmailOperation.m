@@ -176,6 +176,7 @@ static NSString *globalPassword;
 
 -(void)messageSent:(SKPSMTPMessage *)message
 {
+    [self.delegate messageSent:message];
     NSLog(@"mail sent");
     [self completeOperation];
 }
@@ -187,6 +188,7 @@ static NSString *globalPassword;
     {
         NSLog(@"#############Please check if your mail password is correct!!!#############");
     }
+    [self.delegate messageFailed:message error:error];
     [self completeOperation];
 }
 
