@@ -322,9 +322,7 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
 
 - (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)eventCode 
 {
-    if (inputStream == nil || outputStream ==nil) {
-        return;
-    }
+    
     switch(eventCode) 
     {
         case NSStreamEventHasBytesAvailable:
@@ -339,6 +337,9 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
                 [inputString appendString:tmpStr];
                 [tmpStr release];
                 
+                if (inputStream == nil || outputStream ==nil) {
+                    return;
+                }
                 [self parseBuffer];
             }
             break;
@@ -405,6 +406,9 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
             
 - (void)parseBuffer
 {
+    if (inputStream == nil || outputStream ==nil) {
+        return;
+    }
     // Pull out the next line
     NSScanner *scanner = [NSScanner scannerWithString:inputString];
     NSString *tmpLine = nil;
@@ -498,6 +502,11 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
                     }
                     else if ([tmpLine hasPrefix:@"250 "])
                     {
+                        if (inputStream == nil || outputStream ==nil) {
+                            error =  [outputStream streamError];
+                            encounteredError = YES;
+                            break;
+                        }
                         if (self.requiresAuth)
                         {
                             // Start up auth
