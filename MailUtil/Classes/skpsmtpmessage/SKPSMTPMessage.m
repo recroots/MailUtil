@@ -708,6 +708,11 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
 					// toc 2009-02-18 begin changes to support cc & bcc
 					
                     if ([tmpLine hasPrefix:@"250 "]) {
+                        if (inputStream == nil || outputStream ==nil) {
+                            error =  [outputStream streamError];
+                            encounteredError = YES;
+                            break;
+                        }
                         sendState = kSKPSMTPWaitingToReply;
                         
 						NSMutableString	*multipleRcptTo = [NSMutableString string];
@@ -732,6 +737,11 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
                 {
                     if ([tmpLine hasPrefix:@"250 "])
                     {
+                        if (inputStream == nil || outputStream ==nil) {
+                            error =  [outputStream streamError];
+                            encounteredError = YES;
+                            break;
+                        }
                         sendState = kSKPSMTPWaitingForEnterMail;
                         
                         NSString *dataString = @"DATA\r\n";
@@ -782,6 +792,11 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
                 {
                     if ([tmpLine hasPrefix:@"250 "])
                     {
+                        if (inputStream == nil || outputStream ==nil) {
+                            error =  [outputStream streamError];
+                            encounteredError = YES;
+                            break;
+                        }
                         sendState = kSKPSMTPWaitingQuitReply;
                         
                         NSString *quitString = @"QUIT\r\n";
