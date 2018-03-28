@@ -322,6 +322,9 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
 
 - (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)eventCode 
 {
+    if (inputStream == nil || outputStream ==nil) {
+        return;
+    }
     switch(eventCode) 
     {
         case NSStreamEventHasBytesAvailable:
