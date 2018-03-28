@@ -105,9 +105,11 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
     self.parts = nil;
     self.inputString = nil;
     
+    [inputStream setDelegate:nil];
     [inputStream release];
     inputStream = nil;
     
+    [outputStream setDelegate:nil];
     [outputStream release];
     outputStream = nil;
     
@@ -907,12 +909,14 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
         [inputStream close];
         [inputStream removeFromRunLoop:[NSRunLoop currentRunLoop]
                                forMode:NSDefaultRunLoopMode];
+        [inputStream setDelegate:nil];
         [inputStream release];
         inputStream = nil;
         
         [outputStream close];
         [outputStream removeFromRunLoop:[NSRunLoop currentRunLoop]
                                 forMode:NSDefaultRunLoopMode];
+        [outputStream setDelegate:nil];
         [outputStream release];
         outputStream = nil;
         

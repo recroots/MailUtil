@@ -50,7 +50,7 @@ CFIndex CFWriteStreamWriteFully(CFWriteStreamRef outputStream, const uint8_t* bu
     CFIndex bufferOffset = 0;
     CFIndex bytesWritten;
         
-    while (bufferOffset < length)
+    while (bufferOffset < length && outputStream!=nil)
     {
         if (CFWriteStreamCanAcceptBytes(outputStream))
         {
