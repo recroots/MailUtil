@@ -15,6 +15,9 @@
 @property (nonatomic, copy) NSString *subject;
 @property (nonatomic, copy) NSString *body;
 @property (nonatomic, copy) NSString *path;
+@property (nonatomic, copy) NSString *cc;
+@property (nonatomic, copy) NSString *bcc;
+
 
 // 是否在邮件发送成功后删除path对应的文件，默认为NO
 @property (nonatomic, assign) BOOL deleteFileOnCompleted;
@@ -45,6 +48,12 @@
 - (instancetype)initWithTo:(NSString *)to
                    subject:(NSString *)subject
                       body:(NSString *)body
+                      path:(NSString *)path;
+- (instancetype)initWithTo:(NSString *)to
+                   subject:(NSString *)subject
+                      body:(NSString *)body
+                        cc:(NSString *)cc
+                       bcc:(NSString *)bcc
                       path:(NSString *)path;
 - (instancetype)initWithTo:(NSString *)to
                    subject:(NSString *)subject
