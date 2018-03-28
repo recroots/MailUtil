@@ -112,7 +112,6 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
     outputStream = nil;
     
     [self.connectTimer invalidate];
-    self.connectTimer = nil;
     
     [self stopWatchdog];
     
@@ -158,7 +157,6 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
 {
     NSLog(@"*** stopping watchdog ***");
     [self.watchdogTimer invalidate];
-    self.watchdogTimer = nil;
 }
 
 
@@ -306,7 +304,6 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
     else
     {
         [self.connectTimer invalidate];
-        self.connectTimer = nil;
         
         [delegate messageFailed:self 
                           error:[NSError errorWithDomain:@"SKPSMTPMessageError" 
@@ -924,7 +921,7 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
         [self send];
     }
     
-    self.connectTimer = nil;
+    [self.connectTimer invalidate];
 }
 
 
