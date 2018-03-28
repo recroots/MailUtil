@@ -230,9 +230,7 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
 
 
 - (BOOL)send
-{
-    NSAssert(sendState == kSKPSMTPMessageSent, @"Message has already been sent!");
-    
+{    
     if (requiresAuth)
     {
         NSAssert(login, @"auth requires login");
