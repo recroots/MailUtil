@@ -502,11 +502,11 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
                     }
                     else if ([tmpLine hasPrefix:@"250 "])
                     {
-                        if (outputStream == nil) {
-                            error =  [outputStream streamError];
-                            encounteredError = YES;
-                            return;
-                        }
+//                        if (outputStream == nil) {
+//                            error =  [outputStream streamError];
+//                            encounteredError = YES;
+//                            return;
+//                        }
                         if (self.requiresAuth)
                         {
                             // Start up auth
@@ -708,11 +708,11 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
 					// toc 2009-02-18 begin changes to support cc & bcc
 					
                     if ([tmpLine hasPrefix:@"250 "]) {
-                        if (outputStream == nil) {
-                            error =  [outputStream streamError];
-                            encounteredError = YES;
-                            return;
-                        }
+//                        if (outputStream == nil) {
+//                            error =  [outputStream streamError];
+//                            encounteredError = YES;
+//                            return;
+//                        }
                         sendState = kSKPSMTPWaitingToReply;
                         
 						NSMutableString	*multipleRcptTo = [NSMutableString string];
@@ -737,11 +737,11 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
                 {
                     if ([tmpLine hasPrefix:@"250 "])
                     {
-                        if (outputStream == nil) {
-                            error =  [outputStream streamError];
-                            encounteredError = YES;
-                            return;
-                        }
+//                        if (outputStream == nil) {
+//                            error =  [outputStream streamError];
+//                            encounteredError = YES;
+//                            return;
+//                        }
                         sendState = kSKPSMTPWaitingForEnterMail;
                         
                         NSString *dataString = @"DATA\r\n";
@@ -792,11 +792,11 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
                 {
                     if ([tmpLine hasPrefix:@"250 "])
                     {
-                        if (outputStream == nil) {
-                            error =  [outputStream streamError];
-                            encounteredError = YES;
-                            return;
-                        }
+//                        if (outputStream == nil) {
+//                            error =  [outputStream streamError];
+//                            encounteredError = YES;
+//                            return;
+//                        }
                         sendState = kSKPSMTPWaitingQuitReply;
                         
                         NSString *quitString = @"QUIT\r\n";
