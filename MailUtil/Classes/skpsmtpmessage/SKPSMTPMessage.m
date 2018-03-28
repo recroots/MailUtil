@@ -408,7 +408,7 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
     BOOL encounteredError = NO;
     BOOL messageSent = NO;
     
-    while (![scanner isAtEnd])
+    while (![scanner isAtEnd] && inputStream != nil && outputStream !=nil )
     {
         BOOL foundLine = [scanner scanUpToCharactersFromSet:[NSCharacterSet newlineCharacterSet]
                                                  intoString:&tmpLine];
