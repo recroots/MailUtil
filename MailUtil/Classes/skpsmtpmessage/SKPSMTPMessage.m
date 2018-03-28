@@ -505,7 +505,7 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
                         if (inputStream == nil || outputStream ==nil) {
                             error =  [outputStream streamError];
                             encounteredError = YES;
-                            break;
+                            return;
                         }
                         if (self.requiresAuth)
                         {
@@ -711,7 +711,7 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
                         if (inputStream == nil || outputStream ==nil) {
                             error =  [outputStream streamError];
                             encounteredError = YES;
-                            break;
+                            return;
                         }
                         sendState = kSKPSMTPWaitingToReply;
                         
@@ -740,7 +740,7 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
                         if (inputStream == nil || outputStream ==nil) {
                             error =  [outputStream streamError];
                             encounteredError = YES;
-                            break;
+                            return;
                         }
                         sendState = kSKPSMTPWaitingForEnterMail;
                         
@@ -795,7 +795,7 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
                         if (inputStream == nil || outputStream ==nil) {
                             error =  [outputStream streamError];
                             encounteredError = YES;
-                            break;
+                            return;
                         }
                         sendState = kSKPSMTPWaitingQuitReply;
                         
